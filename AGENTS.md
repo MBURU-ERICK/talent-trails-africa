@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application rules
+- Use TanStack public leaf routes for shareable pages and the managed-style client-only authenticated layout for private workspaces, because browser-held sessions cannot gate SSR.
+- Access private records through user-scoped queries and RLS; roles live in user_roles and only trusted provisioning can assign administrator access.
+- Score assessments in the database RPC and store attempts there, because client-supplied scores are untrusted.
+- Keep fictional records read-only and separate from live impact aggregates, because demonstrations must not masquerade as actual outcomes.
+- Centralize visual tokens and layouts in the global stylesheet and shared controls; use asset pointers for media so the app is portable.

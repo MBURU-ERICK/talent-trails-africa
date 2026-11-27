@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795794455715,
+      "tag": "0000_talentbridge_core",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795794568932,
+      "tag": "0001_credential_storage",
+      "breakpoints": true
+    }
+  ]
+}
