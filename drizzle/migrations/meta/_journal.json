@@ -15,6 +15,13 @@
       "when": 1795794568932,
       "tag": "0001_credential_storage",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795795438159,
+      "tag": "0002_employment_records_and_audit",
+      "breakpoints": true
     }
   ]
 }

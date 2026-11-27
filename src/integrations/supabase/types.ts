@@ -98,6 +98,38 @@ export type Database = {
           },
         ]
       }
+      assessment_questions: {
+        Row: {
+          assessment_id: string
+          correct: number
+          id: string
+          options: Json
+          question: string
+        }
+        Insert: {
+          assessment_id: string
+          correct: number
+          id?: string
+          options: Json
+          question: string
+        }
+        Update: {
+          assessment_id?: string
+          correct?: number
+          id?: string
+          options?: Json
+          question?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_questions_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       assessments: {
         Row: {
           category: string
@@ -116,6 +148,33 @@ export type Database = {
           id?: string
           questions?: Json
           title?: string
+        }
+        Relationships: []
+      }
+      audit_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          created_at: string
+          details: Json
+          id: string
+          record_id: string | null
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          created_at?: string
+          details?: Json
+          id?: string
+          record_id?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          created_at?: string
+          details?: Json
+          id?: string
+          record_id?: string | null
         }
         Relationships: []
       }
@@ -196,6 +255,38 @@ export type Database = {
           },
         ]
       }
+      employer_profiles: {
+        Row: {
+          company_name: string
+          created_at: string
+          description: string
+          user_id: string
+          website: string
+        }
+        Insert: {
+          company_name: string
+          created_at?: string
+          description?: string
+          user_id: string
+          website?: string
+        }
+        Update: {
+          company_name?: string
+          created_at?: string
+          description?: string
+          user_id?: string
+          website?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "employer_profiles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       mentors: {
         Row: {
           availability: string
@@ -265,6 +356,38 @@ export type Database = {
           },
         ]
       }
+      notifications: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          read: boolean
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          read?: boolean
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          read?: boolean
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       opportunities: {
         Row: {
           company: string
@@ -315,6 +438,41 @@ export type Database = {
           {
             foreignKeyName: "opportunities_employer_id_fkey"
             columns: ["employer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      portfolio_projects: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          title: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          title: string
+          url?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          title?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "portfolio_projects_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -395,6 +553,27 @@ export type Database = {
           },
         ]
       }
+      readiness_tasks: {
+        Row: {
+          id: string
+          official_confirmation: boolean
+          title: string
+          url: string
+        }
+        Insert: {
+          id: string
+          official_confirmation?: boolean
+          title: string
+          url: string
+        }
+        Update: {
+          id?: string
+          official_confirmation?: boolean
+          title?: string
+          url?: string
+        }
+        Relationships: []
+      }
       saved_opportunities: {
         Row: {
           created_at: string
@@ -421,6 +600,80 @@ export type Database = {
           },
           {
             foreignKeyName: "saved_opportunities_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      skills: {
+        Row: {
+          id: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          name: string
+        }
+        Update: {
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      talent_profiles: {
+        Row: {
+          created_at: string
+          user_id: string
+          work_experience: string
+        }
+        Insert: {
+          created_at?: string
+          user_id: string
+          work_experience?: string
+        }
+        Update: {
+          created_at?: string
+          user_id?: string
+          work_experience?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "talent_profiles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      talent_skills: {
+        Row: {
+          skill_id: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          skill_id: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          skill_id?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "talent_skills_skill_id_fkey"
+            columns: ["skill_id"]
+            isOneToOne: false
+            referencedRelation: "skills"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "talent_skills_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
