@@ -29,6 +29,13 @@
       "when": 1795857105780,
       "tag": "0003_tighten_catalog_read_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1795857221347,
+      "tag": "0004_readiness_tasks_role_scoped",
+      "breakpoints": true
     }
   ]
 }

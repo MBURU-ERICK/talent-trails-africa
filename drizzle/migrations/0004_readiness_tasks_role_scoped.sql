@@ -1,0 +1,2 @@
+DROP POLICY IF EXISTS tasks_read ON public.readiness_tasks;
+CREATE POLICY tasks_read ON public.readiness_tasks FOR SELECT TO authenticated USING (public.has_role(auth.uid(),'talent') OR public.has_role(auth.uid(),'admin'));
