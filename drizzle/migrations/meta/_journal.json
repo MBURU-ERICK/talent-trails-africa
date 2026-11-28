@@ -36,6 +36,13 @@
       "when": 1795857221347,
       "tag": "0004_readiness_tasks_role_scoped",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795857616587,
+      "tag": "0005_employer_verification_and_catalog_scoping",
+      "breakpoints": true
     }
   ]
 }

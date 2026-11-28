@@ -35,3 +35,5 @@ use the editor.
 - Score assessments in the database RPC and store attempts there, because client-supplied scores are untrusted.
 - Keep fictional records read-only and separate from live impact aggregates, because demonstrations must not masquerade as actual outcomes.
 - Centralize visual tokens and layouts in the global stylesheet and shared controls; use asset pointers for media so the app is portable.
+- Employer role is granted only by an admin via review_employer; signup always assigns talent and records a pending employer_requests row, because signup metadata is user-controlled.
+- Admins open private credentials via authenticated storage download, never signed URLs, because bearer links outlive role revocation.

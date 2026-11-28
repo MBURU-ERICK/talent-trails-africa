@@ -287,6 +287,38 @@ export type Database = {
           },
         ]
       }
+      employer_requests: {
+        Row: {
+          created_at: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "employer_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       mentors: {
         Row: {
           availability: string
@@ -714,6 +746,10 @@ export type Database = {
       impact_counts: { Args: never; Returns: Json }
       review_credential: {
         Args: { approved: boolean; credential: string; note: string }
+        Returns: undefined
+      }
+      review_employer: {
+        Args: { applicant: string; approved: boolean }
         Returns: undefined
       }
       submit_assessment: {
