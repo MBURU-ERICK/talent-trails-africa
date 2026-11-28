@@ -22,6 +22,13 @@
       "when": 1795795438159,
       "tag": "0002_employment_records_and_audit",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795857105780,
+      "tag": "0003_tighten_catalog_read_rules",
+      "breakpoints": true
     }
   ]
 }
